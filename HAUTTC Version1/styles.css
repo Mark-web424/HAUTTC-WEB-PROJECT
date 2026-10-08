@@ -1,0 +1,182 @@
+/* CSS styles for HAU Golden Guardians Table Tennis */
+
+/*
+   Author: Natividad, Mark Lorenz P.
+   Section: WD-202
+   Date: October 9, 2026
+*/
+
+/* CSS Reset */
+body, header, nav, main, footer, h1, h2, h3, p, div, img, ul, section, article, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Style rule for box sizing applies to all elements */
+*{
+    box-sizing: border-box;
+}
+
+/* CSS styles for body, images and links */
+body{
+    background: #1C1C1C linear-gradient(to bottom, #1C1C1C 50%, #242424 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img, video{
+    max-width: 100%;
+    display: block;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* CSS styles for page wrapper */
+#container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* CSS styles for header */
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EBE8DD;
+    padding: 12px 16px 0;
+}
+
+header img{
+    height: 70px;
+    width: auto;
+}
+
+/* CSS styles for navigation area */
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+}
+
+nav li a{
+    display: block;
+    font-family: 'Francois One', sans-serif;
+    font-size: 1.1em;
+    color: #000000;
+    padding: 0.7em 0.9em;
+}
+
+nav li a.active{
+    background-color: #D8CB9C;
+}
+
+/* CSS styles for main */
+main{
+    flex: 1;
+}
+
+main > section{
+    padding: 16px;
+}
+
+h1{
+    font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 2.6em;
+    line-height: 1.05;
+    text-align: center;
+}
+
+h2, h3{
+    font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.04em;
+}
+
+.outline{
+    display: block;
+    color: #D4AF37;
+    font-family: 'Big Shoulders Inline Display', 'Arial Narrow', Impact, sans-serif;
+}
+
+/* CSS styles for home */
+#hero{
+    background: linear-gradient(rgba(28, 28, 28, 0.7), rgba(36, 36, 36, 0.8)), url("img/Campus.png") center / cover no-repeat;
+    background-color: #1C1C1C;
+}
+
+video{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+.hero-text{
+    text-align: center;
+    padding: 24px 0 8px;
+}
+
+.hero-text h1{
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.hero-text p{
+    border-top: 1px solid #D4AF37;
+    margin-top: 20px;
+    padding-top: 20px;
+    line-height: 1.6;
+}
+
+/* CSS styles for the footer */
+footer{
+    background-color: #EBE8DD;
+    color: #000000;
+    padding: 16px;
+    text-align: center;
+}
+
+.foot-brand{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.foot-brand img{
+    height: 36px;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.foot-brand p{
+    font-size: 0.9em;
+    line-height: 1.35;
+}
+
+.btn-footer{
+    display: block;
+    background-color: #D8CB9C;
+    font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+    font-size: 1.4em;
+    letter-spacing: 0.08em;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px 0;
+}
+
+.copy{
+    font-size: 0.7em;
+    line-height: 1.5;
+}
