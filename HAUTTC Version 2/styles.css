@@ -1,0 +1,442 @@
+/* CSS styles for HAU Golden Guardians Table Tennis (own version) - Version 2 */
+
+/*
+   Author: Natividad, Mark Lorenz P.
+   Section: WD-202
+   Date: October 10, 2026
+*/
+
+/* CSS Reset */
+body, header, nav, main, footer, h1, h2, h3, p, div, img, ul, figure, figcaption, section, article, aside, video, table, form, fieldset{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Style rule for box sizing applies to all elements */
+*{
+    box-sizing: border-box;
+}
+
+/* CSS styles for body, images and links */
+body{
+    background: #1C1C1C linear-gradient(to bottom, #1C1C1C 50%, #242424 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img, video{
+    max-width: 100%;
+    display: block;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ========================================================================== */
+/* STYLE RULES FOR MOBILE VIEWPORT */
+
+/* Show mobile class, hide tablet-desktop class */
+.mobile{
+    display: block;
+}
+
+.tablet-desktop, .desktop-only, .tablet-only, .hero-btn, .follow{
+    display: none;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* CSS styles for page wrapper */
+#container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+#coach{
+    display: flow-root;
+}
+
+/* Icons: yellow for tablet/desktop, white for mobile */
+.icon-yellow, .icon-tablet{
+    display: none;
+}
+
+.uni{
+    display: inline;
+}
+
+/* CSS styles for header */
+header{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EBE8DD;
+    padding: 8px 16px;
+}
+
+header img{
+    height: 40px;
+    width: auto;
+}
+
+/* CSS styles for navigation area (always visible for now) */
+nav{
+    width: 100%;
+}
+
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+}
+
+nav li a{
+    display: block;
+    font-family: 'Francois One', sans-serif;
+    font-size: 1.1em;
+    color: #000000;
+    padding: 0.6em 0.9em;
+}
+
+nav li a.active{
+    background-color: #D8CB9C;
+}
+
+/* CSS styles for main */
+main{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main > section{
+    padding: 16px;
+}
+
+h1{
+    font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+    font-weight: 700;
+    font-size: 2.6em;
+    line-height: 1.05;
+    text-align: center;
+}
+
+h2, h3{
+    font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.04em;
+}
+
+.outline{
+    display: block;
+    color: #D4AF37;
+    font-family: 'Big Shoulders Inline Display', 'Arial Narrow', Impact, sans-serif;
+}
+
+.eyebrow{
+    color: #D4AF37;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.para{
+    line-height: 1.7;
+    margin-top: 16px;
+}
+
+/* CSS styles for home */
+/* Hero background image with dark overlay */
+#hero{
+    background: linear-gradient(rgba(28, 28, 28, 0.7), rgba(36, 36, 36, 0.8)), url("img/Campus.png") center / cover no-repeat;
+    background-color: #1C1C1C;
+    flex: 1;
+}
+
+/* CSS styles for video */
+video{
+    width: 100%;
+    aspect-ratio: 358 / 294;
+    object-fit: cover;
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+.hero-text{
+    text-align: center;
+    padding: 24px 0 8px;
+}
+
+.hero-text h1{
+    letter-spacing: 0.15em;
+    font-size: clamp(2.3em, 11.5vw, 3.2em);
+    text-transform: uppercase;
+}
+
+.hero-text .outline{
+    display: block;
+    letter-spacing: 0;
+}
+
+.hero-text p{
+    border-top: 1px solid #D4AF37;
+    margin-top: 20px;
+    padding-top: 20px;
+    line-height: 1.6;
+}
+
+/* CSS styles for about */
+.about-text h1{
+    margin-bottom: 16px;
+}
+
+.about-text .eyebrow{
+    margin-top: 16px;
+}
+
+.about-text .para{
+    border-top: 1px solid #D4AF37;
+    padding-top: 16px;
+}
+
+.about-photos img, .coach-photos img, .banner{
+    width: 100%;
+    border-radius: 4px;
+}
+
+.coach-photos figure{
+    margin-bottom: 16px;
+}
+
+/* CSS styles for coach */
+.card{
+    background-color: #2A2A2A;
+    padding: 16px;
+    border-radius: 10px;
+    margin: 8px 0 16px;
+    line-height: 1.6;
+}
+
+.card h3{
+    color: #D4AF37;
+    font-size: 1.8em;
+}
+
+.role{
+    color: #D4AF37;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.contact-box{
+    background-color: #D4AF37;
+    color: #ffffff;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.contact-box h3{
+    font-size: 1.6em;
+    letter-spacing: 0.1em;
+}
+
+.contact-box p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.contact-box img{
+    height: 22px;
+    width: auto;
+    margin-left: 12px;
+}
+
+/* CSS styles for the footer */
+footer{
+    background-color: #EBE8DD;
+    color: #000000;
+    padding: 16px;
+    text-align: center;
+}
+
+.foot-brand{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.foot-brand img{
+    height: 36px;
+    width: auto;
+    flex-shrink: 0;
+}
+
+/* Mobile footer text on two lines */
+.foot-brand p{
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.btn-footer{
+    display: block;
+    background-color: #D8CB9C;
+    font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+    font-size: 1.4em;
+    letter-spacing: 0.08em;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px 0;
+}
+
+.copy{
+    font-size: 0.7em;
+    line-height: 1.5;
+}
+
+
+/* ========================================================================== */
+
+/* MEDIA QUERY FOR MOBILE ONLY VIEWPORT */
+@media screen and (max-width: 629px){
+    /* Mobile Viewport: Style rules for about */
+    #about{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-text{
+        display: contents;
+    }
+
+    .about-text .eyebrow{
+        order: 1;
+        margin: 0 0 8px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+    }
+
+    .about-text h1{
+        order: 2;
+        text-transform: uppercase;
+        font-size: clamp(2em, 10vw, 2.6em);
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #D4AF37;
+    }
+
+    .about-photos{
+        order: 3;
+    }
+
+    .about-text .para{
+        order: 4;
+        border-top: 0;
+        padding-top: 0;
+        margin-top: 16px;
+    }
+
+    /* Mobile Viewport: Style rules for coach */
+    #coach{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .coach-info{
+        display: contents;
+    }
+
+    .coach-info .eyebrow{
+        order: 1;
+        margin: 0 0 6px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+    }
+
+    .coach-info h1{
+        order: 2;
+        text-transform: uppercase;
+        font-size: clamp(1.9em, 8.6vw, 2.6em);
+        margin-bottom: 20px;
+    }
+
+    .coach-info h1::after{
+        content: "";
+        display: block;
+        width: 160px;
+        max-width: 60%;
+        height: 2px;
+        background-color: #D4AF37;
+        margin: 10px auto 0;
+    }
+
+    .coach-info .role{
+        display: none;
+    }
+
+    .coach-photos{
+        order: 3;
+    }
+
+    .coach-photos figure{
+        margin-bottom: 20px;
+    }
+
+    .coach-photos img{
+        aspect-ratio: 358 / 170;
+        object-fit: cover;
+    }
+
+    .coach-info .card{
+        order: 4;
+        margin-top: 0;
+    }
+
+    .coach-info .contact-box{
+        order: 5;
+        text-align: left;
+    }
+
+    .coach-info .contact-box h3{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1em;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+
+    .coach-info .contact-box p{
+        justify-content: flex-start;
+    }
+
+    .coach-info .contact-box img{
+        margin-left: 0;
+    }
+}
+
