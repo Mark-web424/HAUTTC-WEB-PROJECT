@@ -3,7 +3,7 @@
 /*
    Author: Natividad, Mark Lorenz P.
    Section: WD-202
-   Date: October 12, 2026
+   Date: October 14, 2026
 */
 
 /* CSS Reset */
@@ -24,6 +24,18 @@ body{
     min-height: 100vh;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    animation: fadeIn 0.5s ease-in;
+    transition: opacity 0.4s ease;
+}
+
+/* Page transition: fade in and fade out */
+@keyframes fadeIn{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
+
+body.leaving{
+    opacity: 0;
 }
 
 img, video{
@@ -34,6 +46,16 @@ img, video{
 a{
     color: inherit;
     text-decoration: none;
+}
+
+/* Accessibility: focus outline and touch targets */
+a:focus, button:focus, input:focus, textarea:focus{
+    outline: 3px solid #D8CB9C;
+    outline-offset: 2px;
+}
+
+button, input[type = "submit"], input[type = "reset"], nav li a, .btn-footer{
+    min-height: 44px;
 }
 
 /* ========================================================================== */
@@ -84,7 +106,6 @@ a{
 header{
     position: relative;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #EBE8DD;
@@ -96,24 +117,44 @@ header img{
     width: auto;
 }
 
-/* CSS styles for navigation area (always visible for now) */
+/* CSS styles for hamburger button */
+#menu-btn{
+    background-color: #D8CB9C;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.4em;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+/* CSS styles for navigation area */
 nav{
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
+    background-color: #EBE8DD;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    z-index: 10;
+}
+
+nav.open{
+    max-height: 300px;
 }
 
 nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     list-style-type: none;
+    text-align: center;
 }
 
 nav li a{
     display: block;
     font-family: 'Francois One', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #000000;
-    padding: 0.6em 0.9em;
+    padding: 0.7em;
 }
 
 nav li a.active{
@@ -406,7 +447,6 @@ footer{
     font-size: 0.7em;
     line-height: 1.5;
 }
-
 
 /* ========================================================================== */
 
@@ -1469,3 +1509,335 @@ footer{
 
 
 
+/* MEDIA QUERY FOR PRINT */
+
+@page{
+    margin: 0.5in;
+}
+
+@media print{
+    /* Print: Print backgrounds and colors */
+    *{
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body{
+        background: #ffffff;
+        color: #000000;
+        min-height: 0;
+        animation: none;
+    }
+
+    #container{
+        display: block;
+        min-height: 0;
+        max-width: none;
+    }
+
+    main{
+        display: block;
+        color: #000000;
+    }
+
+    /* Print: Style rules for header and nav */
+    header{
+        flex-direction: column;
+        justify-content: center;
+        background-color: #ffffff;
+        padding: 0 0 8px;
+    }
+
+    header img{
+        height: 120px;
+    }
+
+    nav{
+        position: static;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        background-color: transparent;
+        margin-top: 12px;
+    }
+
+    nav ul{
+        gap: 0;
+        justify-content: center;
+    }
+
+    nav li a, nav li a.active{
+        font-size: 1.6em;
+        padding: 6px 24px;
+        border-radius: 0;
+        background-color: transparent;
+        color: #000000;
+        border-right: 1px solid #aaaaaa;
+    }
+
+    nav li:last-child a{
+        border-right: none;
+    }
+
+    /* Print: Style rule for sections */
+    #about, #coach, #join{
+        max-width: none;
+        margin: 24px auto 0;
+        padding: 8px 0;
+    }
+
+    /* Print: Style rules for home */
+    #hero{
+        width: 92%;
+        margin: 24px auto 0;
+        padding: 40px 32px;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 2fr);
+        grid-gap: 20px;
+        color: #ffffff;
+    }
+
+    .hero-text h1{
+        font-size: 2.2em;
+    }
+
+    .hero-text p{
+        max-width: none;
+    }
+
+    .hero-text p{
+        color: #ffffff;
+        font-size: 0.8em;
+    }
+
+    .hero-btn{
+        display: none;
+    }
+
+    /* Print: Hide video controls */
+    video::-webkit-media-controls{
+        display: none !important;
+    }
+
+    /* Print: Style rules for about */
+    .about-photos img{
+        border: 1px solid #3F3F3F;
+        border-radius: 0;
+    }
+
+    .about-text h1{
+        color: #A1A4A9;
+    }
+
+    .about-text .eyebrow, .about-text .para, .outline{
+        color: #D4AF37;
+    }
+
+    .motto{
+        color: #3F3F3F;
+    }
+
+    /* Print: Style rules for coach with watermark */
+    #coach{
+        background: url("img/school-logo.png") center center / contain no-repeat;
+        /* Print: Photos aligned to the top */
+        align-items: start;
+        margin-top: 8px;
+        padding-top: 0;
+    }
+
+    .coach-photos{
+        align-self: start;
+    }
+
+    .coach-info h1{
+        color: #3F3F3F;
+    }
+
+    .coach-info .eyebrow, .coach-info .role, .coach-info h3{
+        color: #B8941F;
+    }
+
+    .coach-info ul, .coach-info li{
+        color: #000000;
+    }
+
+    .coach-info .contact-box, .coach-info .contact-box a{
+        color: #D4AF37;
+    }
+
+    /* Print: Style rules for join, table fits page 1 */
+    #join{
+        margin-top: 8px;
+    }
+
+    .apply{
+        font-size: 2.6em;
+        margin-bottom: 6px;
+    }
+
+    .banner{
+        border-radius: 0;
+    }
+
+    #join table{
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #E4E0C3;
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 10px 0 0;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    #join tr{
+        break-inside: avoid;
+    }
+
+    #join th{
+        font-size: 1.25em;
+        padding: 8px 10px;
+    }
+
+    #join td{
+        font-size: 0.72em;
+        line-height: 1.35;
+        padding: 6px 10px;
+    }
+
+    #join th, #join td{
+        background-color: #ffffff;
+        color: #8F9298;
+        border: none;
+        border-right: 1px solid #EFECD6;
+        border-bottom: 1px solid #EFECD6;
+        height: auto;
+        font-weight: 300;
+    }
+
+    #join th{
+        color: #9A9DA3;
+        font-family: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    #join th:last-child, #join td:last-child{
+        border-right: none;
+    }
+
+    #join tr:last-child td{
+        border-bottom: none;
+    }
+
+    /* Print: Form starts on page 2 */
+    #join form{
+        break-before: page;
+        background: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    fieldset legend{
+        color: #A1A4A9;
+    }
+
+    label{
+        display: none;
+    }
+
+    input[type = "text"], input[type = "email"], input[type = "tel"], textarea{
+        background-color: #ffffff;
+        color: #555555;
+        border: 1px solid #555555;
+        margin-bottom: 28px;
+    }
+
+    input::placeholder, textarea::placeholder{
+        color: #A1A4A9;
+    }
+
+    #submit, #reset{
+        background: none;
+        width: auto;
+        padding: 10px 20px;
+    }
+
+    #submit{
+        color: #A1A4A9;
+    }
+
+    #reset{
+        color: #000000;
+    }
+
+    .contact-grid{
+        display: block;
+        margin-top: 24px;
+    }
+
+    .contact-grid .contact-box{
+        background: none;
+        padding: 0;
+        margin-bottom: 20px;
+        color: #A1A4A9;
+    }
+
+    .contact-grid .contact-box h3, .contact-grid .contact-box a{
+        color: #A1A4A9;
+    }
+
+    .contact-grid .contact-box img{
+        filter: brightness(0) opacity(0.4);
+    }
+
+    /* Print: Style rules for footer */
+    footer{
+        background-color: #ffffff;
+        color: #000000;
+        margin-top: 24px;
+        padding: 14px 0 5px;
+        /* Print: Keep footer on one page */
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Print: Copyright inside footer */
+    footer .copy{
+        grid-column: 1 / -1;
+        text-align: center;
+        border-top: 0;
+        margin: 6px 0 0;
+        padding: 0;
+    }
+
+    .foot-brand img{
+        height: 56px;
+    }
+
+    .foot-brand p{
+        font-size: 1.15em;
+    }
+
+    .btn-footer{
+        display: block;
+        background: none;
+        color: #000000;
+        padding: 0;
+        min-height: 0;
+        font-size: 1.4em;
+        letter-spacing: 0.12em;
+    }
+
+    .follow span{
+        color: #000000;
+    }
+
+    .follow img{
+        height: 26px;
+    }
+
+    h1, h2, h3, table, figure, .contact-grid{
+        break-inside: avoid;
+    }
+}
