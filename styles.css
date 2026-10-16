@@ -3,7 +3,7 @@
 /*
    Author: Natividad, Mark Lorenz P.
    Section: WD-202
-   Date: October 14, 2026
+   Date: October 1, 2026
 */
 
 /* CSS Reset */
@@ -19,8 +19,13 @@ body, header, nav, main, footer, h1, h2, h3, p, div, img, ul, figure, figcaption
 }
 
 /* CSS styles for body, images and links */
+html{
+    -webkit-text-size-adjust: 100%;
+}
+
 body{
     background: #1C1C1C linear-gradient(to bottom, #1C1C1C 50%, #242424 100%);
+    overflow-x: hidden;
     min-height: 100vh;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
@@ -55,7 +60,12 @@ a:focus, button:focus, input:focus, textarea:focus{
 }
 
 button, input[type = "submit"], input[type = "reset"], nav li a, .btn-footer{
-    min-height: 44px;
+    min-height: 48px;
+}
+
+/* Long words and links wrap instead of causing sideways scrolling */
+p, li, dd, td, th, a, h1, h2, h3{
+    overflow-wrap: break-word;
 }
 
 /* ========================================================================== */
@@ -119,6 +129,7 @@ header img{
 
 /* CSS styles for hamburger button */
 #menu-btn{
+    min-width: 48px;
     background-color: #D8CB9C;
     border: none;
     border-radius: 8px;
@@ -245,6 +256,102 @@ video{
     line-height: 1.6;
 }
 
+/* CSS styles for home quick info: tryout schedule and coach teaser */
+#quick-info{
+    background-color: #1C1C1C;
+    padding: 24px 16px;
+}
+
+.section-title{
+    color: #D4AF37;
+    font-size: clamp(1.9em, 8vw, 2.6em);
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.quick-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+    align-items: stretch;
+}
+
+.quick-card{
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: #2A2A2A;
+    border: 1px solid #9B7C1F;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.quick-card h3{
+    color: #D4AF37;
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.schedule{
+    margin: 0 0 16px;
+}
+
+.schedule div{
+    border-top: 1px solid #4A4A4A;
+    padding: 10px 0;
+}
+
+.schedule dt{
+    color: #D8CB9C;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.schedule dd{
+    margin: 2px 0 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.teaser-img{
+    width: 100%;
+    aspect-ratio: 564 / 341;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.teaser-name{
+    color: #D8CB9C;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.teaser-text{
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin: 6px 0 16px;
+}
+
+.quick-link{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: auto;
+    min-height: 48px;
+    background-color: #D8CB9C;
+    color: #000000;
+    font-family: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+    font-size: 1.3em;
+    letter-spacing: 0.08em;
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+
 /* CSS styles for about */
 .about-text h1{
     margin-bottom: 16px;
@@ -363,16 +470,66 @@ label{
 
 input[type = "text"], input[type = "email"], input[type = "tel"], textarea{
     width: 100%;
-    background-color: #9B7C1F;
+    background-color: #85691A;
     color: #ffffff;
-    border: none;
+    border: 2px solid #D8CB9C;
     border-radius: 6px;
     padding: 14px;
     font-family: 'Poppins', sans-serif;
 }
 
+input[type = "text"], input[type = "email"], input[type = "tel"]{
+    min-height: 48px;
+}
+
 input::placeholder, textarea::placeholder{
-    color: #EBE8DD;
+    color: #FFF8E0;
+}
+
+/* Form helpers: required mark, error messages, confirmation message */
+.req{
+    color: #D4AF37;
+}
+
+.form-note{
+    color: #D8CB9C;
+    font-size: 0.85em;
+    padding-bottom: 4px;
+}
+
+.error{
+    display: block;
+    color: #FF8A80;
+    font-size: 0.85em;
+    line-height: 1.4;
+    padding-top: 6px;
+}
+
+.error:empty, .form-status:empty{
+    display: none;
+}
+
+input.invalid, textarea.invalid{
+    border-color: #FF8A80;
+}
+
+.form-status{
+    background-color: #D8CB9C;
+    color: #1C1C1C;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.form-status.error-status{
+    background-color: #3A1F1F;
+    color: #FF8A80;
+    border: 2px solid #FF8A80;
 }
 
 .btn-row{
@@ -391,7 +548,7 @@ input::placeholder, textarea::placeholder{
 }
 
 #submit{
-    background-color: #9B7C1F;
+    background-color: #85691A;
     color: #ffffff;
 }
 
@@ -1007,7 +1164,7 @@ footer{
     }
 
     #submit, #reset{
-        height: 44px;
+        height: 48px;
         font-size: 0.85em;
         text-transform: uppercase;
     }
@@ -1413,7 +1570,7 @@ footer{
     }
 
     #submit, #reset{
-        height: 44px;
+        height: 48px;
         font-size: 0.85em;
     }
 
@@ -1509,6 +1666,58 @@ footer{
 
 
 
+/* ========================================================================== */
+
+/* bigger tap areas for links (layout stays the same) */
+@media screen{
+    .contact-box a{
+        padding: 12px 4px;
+        margin: -12px -4px;
+    }
+}
+
+/* SCREEN ONLY: tablet and desktop additions */
+@media screen and (min-width: 630px){
+    .follow{
+        gap: 0;
+    }
+
+    .follow span{
+        margin-right: 5px;
+    }
+
+    .follow a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+    #quick-info{
+        padding: 40px 32px;
+    }
+
+    .quick-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1015px){
+    #quick-info{
+        padding: 56px clamp(24px, 5.6vw, 96px);
+    }
+
+    .quick-grid{
+        grid-template-columns: 1.15fr 1fr;
+        grid-gap: clamp(24px, 3vw, 48px);
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+}
+
+/* ========================================================================== */
+
 /* MEDIA QUERY FOR PRINT */
 
 @page{
@@ -1516,7 +1725,7 @@ footer{
 }
 
 @media print{
-    /* Print: Print backgrounds and colors */
+    /* Print backgrounds and colors */
     *{
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -1636,10 +1845,9 @@ footer{
         color: #3F3F3F;
     }
 
-    /* Print: Style rules for coach with watermark */
+    /* Print Style rules for coach with watermark */
     #coach{
         background: url("img/school-logo.png") center center / contain no-repeat;
-        /* Print: Photos aligned to the top */
         align-items: start;
         margin-top: 8px;
         padding-top: 0;
@@ -1730,7 +1938,7 @@ footer{
         border-bottom: none;
     }
 
-    /* Print: Form starts on page 2 */
+    /* Print Form page 2 */
     #join form{
         break-before: page;
         background: none;
@@ -1791,18 +1999,17 @@ footer{
         filter: brightness(0) opacity(0.4);
     }
 
-    /* Print: Style rules for footer */
+    /* Print for footer */
     footer{
         background-color: #ffffff;
         color: #000000;
         margin-top: 24px;
         padding: 14px 0 5px;
-        /* Print: Keep footer on one page */
         break-inside: avoid;
         page-break-inside: avoid;
     }
 
-    /* Print: Copyright inside footer */
+    /* Print (Copyright inside footer) */
     footer .copy{
         grid-column: 1 / -1;
         text-align: center;
@@ -1839,5 +2046,9 @@ footer{
 
     h1, h2, h3, table, figure, .contact-grid{
         break-inside: avoid;
+    }
+
+    #quick-info, .form-note, .form-status, .error{
+        display: none;
     }
 }
